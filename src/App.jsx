@@ -12,6 +12,16 @@ function App() {
       date: new Date(2026, 10, 12),
       title: "Old Book",
       price: 90.99
+    },
+    {
+      date: new Date(2026, 10, 12),
+      title: "Old Book",
+      price: 90.99
+    },
+    {
+      date: new Date(2026, 10, 12),
+      title: "Old Book",
+      price: 90.99
     }
   ]
 
