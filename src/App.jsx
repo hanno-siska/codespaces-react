@@ -1,9 +1,10 @@
 import './App.css';
+import { useState } from 'react';
 import Expenses from './components/Expenses/Expenses.jsx';
 import NewExpense from './components/NewExpense/NewExpense.jsx';
 
 function App() {
-  const data = [
+  const [data, setData] = useState([
     {
       date: new Date(2024, 10, 12),
       title: "New Book",
@@ -24,11 +25,18 @@ function App() {
       title: "Old Book",
       price: 90.99
     }
-  ]
+  ]);
 
   const addExpenseHandler = (expense) => {
-    console.log(expense);
-  }
+    setData((previousData) => [
+      ...previousData,
+      {
+        date: new Date(Date.parse(expense.date)),
+        title: expense.title,
+        price: expense.price
+      }
+    ]);
+  };
 
   return (
     <div className="App">
