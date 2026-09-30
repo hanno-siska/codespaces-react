@@ -4,7 +4,7 @@ import "./ExpenseForm.css";
 const ExpenseForm = (props) => {
     const [userInput, setuserInput] = useState({
         enteredTitle: '',
-        enteredPrice: '',
+        enteredAmount: '',
         enteredDate: ''
     });
 
@@ -12,12 +12,12 @@ const ExpenseForm = (props) => {
         event.preventDefault();
         const ExpenseData = {
             title: userInput.enteredTitle,
-            price: userInput.enteredPrice,
+            amount: userInput.enteredAmount,
             date: userInput.enteredDate
         }
 
         props.onSaveExpenseData(ExpenseData);
-        setuserInput({enteredDate: "", enteredPrice: "", enteredTitle: ""});
+        setuserInput({enteredDate: "", enteredAmount: "", enteredTitle: ""});
     }
 
     const titleChangeHandler = (event) => {
@@ -27,10 +27,10 @@ const ExpenseForm = (props) => {
         });
     }
 
-    const priceChangeHandler = (event) => {
+    const amountChangeHandler = (event) => {
         setuserInput({
             ...userInput,
-            enteredPrice: event.target.value
+            enteredAmount: event.target.value
         });
     }
 
@@ -53,10 +53,10 @@ const ExpenseForm = (props) => {
                     />
                 </div>
                 <div className="new-expense__control">
-                    <label>Price</label>
+                    <label>Amount</label>
                     <input type="number" min="0.01" step="0.01"
-                        onChange={priceChangeHandler}
-                        value={userInput.enteredPrice}
+                        onChange={amountChangeHandler}
+                        value={userInput.enteredAmount}
                     />
                 </div>
                 <div className="new-expense__control">

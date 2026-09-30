@@ -5,8 +5,7 @@ import ExpenseListItem from "./ExpenseListItem.jsx";
 import Card from "../UI/Card.jsx";
 
 const Expenses = (props) => {
-    const data = props.data;
-    const [selectedYear, setSelectedYear] = useState("2026");
+    const [selectedYear, setSelectedYear] = useState("2024");
 
     const yearChangeHandler = (year) => {
         console.log("Expenses received selected year:", year);
@@ -14,6 +13,10 @@ const Expenses = (props) => {
     };
 
     console.log("Expenses selected year:", selectedYear);
+    const filteredExpenses = props.expenses.filter(
+        (expense) => expense.date.getFullYear().toString() === selectedYear
+    );
+    console.log("Expenses filtered list:", filteredExpenses);
 
     return (
         <Card className="expenses">
@@ -21,8 +24,8 @@ const Expenses = (props) => {
                 selectedYear={selectedYear}
                 onChangeFilter={yearChangeHandler}
             />
-            {data.map((element, index) => (
-                <ExpenseListItem key={index} data={element} />
+            {filteredExpenses.map((expense) => (
+                <ExpenseListItem key={expense.id} data={expense} />
             ))}
         </Card>
     );
